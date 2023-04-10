@@ -10,14 +10,14 @@ public class IOCTest {
     @Test
     public void test02(){
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
-        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
-        for(String name : beanDefinitionNames){
-            System.out.println(name);
-        }
-
-        Object bean = applicationContext.getBean("person");
-        Object bean2 = applicationContext.getBean("person");
-        System.out.println(bean == bean2);
+//        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+//        for(String name : beanDefinitionNames){
+//            System.out.println(name);
+//        }
+//
+//        Object bean = applicationContext.getBean("person");
+//        Object bean2 = applicationContext.getBean("person");
+//        System.out.println(bean == bean2);
     }
 
     @Test
