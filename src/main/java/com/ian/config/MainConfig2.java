@@ -3,6 +3,7 @@ package com.ian.config;
 import com.ian.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
@@ -21,8 +22,13 @@ public class MainConfig2 {
         以後每次獲取就是直接從容器中(map.get())拿
     request 同一個請求創建一個實例
     session 同一個session創建一個實例
+
+    * 懶加載
+            單例Bean, 默認在容器啟動的時候創建對象;
+            懶加載, 容器啟動不創建對象, 第一次使用(獲取)Bean創建對象, 並初始化
     **/
-    @Scope("prototype")
+//    @Scope("prototype")
+    @Lazy
     @Bean("person")
     public Person person(){
         System.out.println("給容器添加person");

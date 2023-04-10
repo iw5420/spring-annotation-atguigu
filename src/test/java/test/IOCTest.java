@@ -18,7 +18,7 @@ public class IOCTest {
         System.out.println("ioc容器創建完成");
         Object bean = applicationContext.getBean("person");
         Object bean2 = applicationContext.getBean("person");
-//        System.out.println(bean == bean2);
+        System.out.println(bean == bean2);
     }
 
     @Test
