@@ -1,10 +1,9 @@
 package com.ian.config;
 
 import com.ian.bean.Person;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Scope;
+import com.ian.condition.LinuxCondition;
+import com.ian.condition.WindowsCondition;
+import org.springframework.context.annotation.*;
 
 @Configuration
 public class MainConfig2 {
@@ -27,11 +26,31 @@ public class MainConfig2 {
             單例Bean, 默認在容器啟動的時候創建對象;
             懶加載, 容器啟動不創建對象, 第一次使用(獲取)Bean創建對象, 並初始化
     **/
-//    @Scope("prototype")
+    //    @Scope("prototype")
     @Lazy
     @Bean("person")
     public Person person(){
         System.out.println("給容器添加person");
         return new Person("張三", 25);
+    }
+
+    /*
+        @Conditional({Condition}), 按照一定的條件進行判斷, 滿足條件給容器中註冊bean
+
+        要求
+        如果系統是windows, 給容器中註冊("bill")
+        如果系統是linux, 給容器中註冊("linus")
+     */
+
+    @Conditional({WindowsCondition.class})
+    @Bean("bill")
+    public Person person01(){
+        return new Person("Bill Gates", 62);
+    }
+
+    @Conditional({LinuxCondition.class})
+    @Bean("linus")
+    public Person person02(){
+        return new Person("linus", 48);
     }
 }
