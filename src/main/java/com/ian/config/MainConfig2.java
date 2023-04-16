@@ -5,6 +5,8 @@ import com.ian.condition.LinuxCondition;
 import com.ian.condition.WindowsCondition;
 import org.springframework.context.annotation.*;
 
+//用在類上, 滿足條件, 這個類中配置的所有bean才會生效
+@Conditional({WindowsCondition.class})
 @Configuration
 public class MainConfig2 {
 
